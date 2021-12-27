@@ -22,8 +22,9 @@ namespace AppitoolsSpecflow.Pages
         public IWebElement txtopts => WebDriver.FindElement(By.XPath("//*[@id='page-content']/div[1]/div[3]/div/div[2]/div/div/button[2]"));
         public IWebElement txtoptt => WebDriver.FindElement(By.XPath("//*[@id='page-content']/div[1]/div[3]/div/div[2]/div/div/button[3]"));
 
-        public IWebElement txtmouse=>WebDriver.FindElement(By.XPath("//*[@id=\"wrapper\"]/div/div[1]/div[3]/div/div/div/div[2]/button"));
-        public IWebElement txtlgout => WebDriver.FindElement(By.XPath("//*[@id=\"dropdown-1\"]/div/button[4]"));
+        public IWebElement txtmouse=>WebDriver.FindElement(By.XPath("//*[@id='wrapper']/div/div[1]/div[4]/div/div/div/div[2]/button"));
+        
+        public IWebElement txtlgout => WebDriver.FindElement(By.XPath("//*[@id=\'dropdown-1\']/div/button[4]"));
 
         //Scenario1
 
@@ -73,7 +74,8 @@ namespace AppitoolsSpecflow.Pages
         public IWebElement txtusecase => WebDriver.FindElement(By.XPath("//*[@id='menu-item-54']/a"));
         public IWebElement txtchatbot => WebDriver.FindElement(By.XPath("//*[@id='intercom-container']/div/iframe"));
         public IWebElement txtclsbot => WebDriver.FindElement(By.XPath("//*[@id='intercom-container']/div/iframe"));
-       // public IWebElement txtplay => WebDriver.FindElement(By.XPath("//*[@id='post-8']/div[3]/div/div[2]/button"));
+        public IWebElement txtplay => WebDriver.FindElement(By.XPath("//button[@class='play']"));
+        
         
 
         public void Getprod()
@@ -95,10 +97,15 @@ namespace AppitoolsSpecflow.Pages
             Thread.Sleep(2000);
             txtclsbot.Click();
         }
-       // public void Getplay()
-        //{
-            //txtplay.Click();  
-        //}
+        public void Getplay()
+        {
+            
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver;
+            executor.ExecuteScript("window.scrollTo(0,1200)");
+            executor.ExecuteScript("arguments[0].click();", txtplay);
+             
+        }
+        
     
 
 

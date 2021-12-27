@@ -84,7 +84,8 @@ namespace AppitoolsSpecflow.Steps
         [Then(@"User tries to play video")]
         public void ThenUserTriesToPlayVideo()
         {
-           // userFunction.Getplay();
+            userFunction.Getplay();
+            
         }
 
 
