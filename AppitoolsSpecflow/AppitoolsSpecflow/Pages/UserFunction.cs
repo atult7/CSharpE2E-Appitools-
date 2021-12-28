@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -80,16 +81,31 @@ namespace AppitoolsSpecflow.Pages
 
         public void Getprod()
         {
-            Console.WriteLine(txtprod.Text);
+            Actions action = new Actions(WebDriver);
+            action.MoveToElement(txtprod).Perform();
+            IList<IWebElement> allText = WebDriver.FindElements(By.XPath("//*[@id='menu-item-50']/ul/li"));
+            foreach (IWebElement option in allText)
+            {
+                Console.WriteLine(option.Text);
+            }
+
+
         }
         public void Getusecase()
         {
-            Console.WriteLine(txtusecase.Text);
-            
+            Actions action = new Actions(WebDriver);
+            action.MoveToElement(txtusecase).Perform();
+            IList<IWebElement> allText = WebDriver.FindElements(By.XPath("//*[@id='menu-item-54']/ul/li"));
+            foreach (IWebElement option in allText)
+            {
+                Console.WriteLine(option.Text);
+                WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+            }
+
         }
         public void Getchatbot()
         {
-            WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+            
             txtchatbot.Click();
         }
         public void Getclsbot()
